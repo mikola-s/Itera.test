@@ -15,6 +15,26 @@ function merge_cells_in_table($start_array){
   output_table($cells_array, $rows_in_tab, $cols_in_tab);
 }
 
+
+/*возвращает $cells_array с размерностью [$rows_in_tab * $cols_in_tab]
+с начальными данными по схеме офрмления*/
+function empty_cells_array($rows_in_tab, $cols_in_tab){
+  $cells_count = $rows_in_tab * $cols_in_tab;
+  for ($cell=1; $cell <= $cells_count; $cell++) {
+    $cells_arr[$cell] = array(
+            'align' => '',
+            'valign' => '',
+            'bgcolor' => '',
+            'colspan' => '1',
+            'rowspan' => '1',
+            'id' => '',
+            'color' => '',
+            'text' => '');
+  }
+  return $cells_arr;
+}
+
+
 /**в соответствии с набором чисел в ячейке ['cells']
   *массива $start_array передает данные в массив $cells_array*/
 function start_arr_transfer($start_array, $cells_array, $rows_in_tab, $cols_in_tab){
@@ -210,23 +230,4 @@ _JS_SCRIPT;
   }
   //конец HTML документа
   echo '</tr></table></body></html>';
-}
-
-
-/*возвращает $cells_array с размерностью [$rows_in_tab * $cols_in_tab]
-с начальными данными по схеме офрмления*/
-function empty_cells_array($rows_in_tab, $cols_in_tab){
-  $cells_count = $rows_in_tab * $cols_in_tab;
-  for ($cell=1; $cell <= $cells_count; $cell++) {
-    $cells_arr[$cell] = array(
-            'align' => '',
-            'valign' => '',
-            'bgcolor' => '',
-            'colspan' => '1',
-            'rowspan' => '1',
-            'id' => '',
-            'color' => '',
-            'text' => '');
-  }
-  return $cells_arr;
 }
